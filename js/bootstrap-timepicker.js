@@ -498,7 +498,7 @@
         this.$widget.removeClass('open');
       }
 
-      $(document).off('mousedown.timepicker, touchend.timepicker');
+      $(document).off('mousedown.timepicker');
 
       this.isOpen = false;
       // show/hide approach taken by datepicker
