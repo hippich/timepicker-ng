@@ -31,6 +31,9 @@
     this.showWidgetOnAddonClick = options.showWidgetOnAddonClick;
     this.timeSeparator = options.separator;
 
+    this.inputGroupCls = options.inputGroupCls || 'input-group';
+    this.inputAddonCls = options.inputAddonCls || 'input-group-addon';
+
     this._init();
   };
 
@@ -61,8 +64,8 @@
     _init: function() {
       var self = this;
 
-      if (this.showWidgetOnAddonClick && this.$element.parent().hasClass('input-group')) {
-        this.$element.parent('.input-group').find('.input-group-addon').on({
+      if (this.showWidgetOnAddonClick && this.$element.parent().hasClass(this.inputGroupCls)) {
+        this.$element.parent('.' + this.inputGroupCls).find('.' + this.inputAddonCls).on({
           'click.timepicker': $.proxy(this.showWidget, this)
         });
         this.$element.on({
