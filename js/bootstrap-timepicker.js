@@ -34,6 +34,8 @@
     this.inputGroupCls = options.inputGroupCls || 'input-group';
     this.inputAddonCls = options.inputAddonCls || 'input-group-addon';
 
+    this.lockTabs = options.lockTabs || false;
+
     this._init();
   };
 
@@ -96,6 +98,24 @@
 
       if (this.template !== false) {
         this.$widget = $(this.getTemplate()).on('click', $.proxy(this.widgetClick, this));
+
+        if (this.lockTabs) {
+          this.$widget.on('keydown', 'input:last', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (!e.shiftKey && keyCode === 9) {
+              e.preventDefault();
+              self.$widget.find('input:first').focus();
+            }
+          });
+
+          this.$widget.on('keydown', 'input:first', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (e.shiftKey && keyCode === 9) {
+              e.preventDefault();
+              self.$widget.find('input:last').focus();
+            }
+          });
+        }
       } else {
         this.$widget = false;
       }
