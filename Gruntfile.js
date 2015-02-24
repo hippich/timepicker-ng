@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     },
     'jasmine': {
       build: {
-        src : ['spec/js/libs/jquery/dist/jquery.min.js', 'spec/js/libs/bootstrap/js/bootstrap.min.js', 'spec/js/libs/autotype/index.js', 'js/bootstrap-timepicker.js'],
+        src : ['spec/js/libs/jquery/dist/jquery.min.js', 'spec/js/libs/bootstrap/js/bootstrap.min.js', 'spec/js/libs/autotype/index.js', 'js/timepicker-ng.js'],
         options: {
           specs : 'spec/js/*Spec.js',
           helpers : 'spec/js/helpers/*.js',
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
           module: true
         }
       },
-      files: ['js/bootstrap-timepicker.js', 'Gruntfile.js', 'package.json', 'spec/js/*Spec.js']
+      files: ['js/timepicker-ng.js', 'Gruntfile.js', 'package.json', 'spec/js/*Spec.js']
     },
     'less': {
       dev: {
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
     },
     'watch': {
       js: {
-        files: ['js/bootstrap-timepicker.js', 'spec/js/*Spec.js'],
+        files: ['js/timepicker-ng.js', 'spec/js/*Spec.js'],
         tasks: ['jshint', 'jasmine'],
         options: {
           livereload: true
