@@ -105,7 +105,7 @@
             var keyCode = e.keyCode || e.which;
             if (!e.shiftKey && keyCode === 9) {
               e.preventDefault();
-              self.$widget.find('input:first').focus();
+              self.$widget.find('input:first').focus().select();
             }
           });
 
@@ -113,7 +113,7 @@
             var keyCode = e.keyCode || e.which;
             if (e.shiftKey && keyCode === 9) {
               e.preventDefault();
-              self.$widget.find('input:last').focus();
+              self.$widget.find('input:last').focus().select();
             }
           });
         }
