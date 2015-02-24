@@ -99,6 +99,7 @@
       if (this.template !== false) {
         this.$widget = $(this.getTemplate()).on('click', $.proxy(this.widgetClick, this));
 
+        // If `lockTabs` is TRUE - keep user tabbing inside widget
         if (this.lockTabs) {
           this.$widget.on('keydown', 'input:last', function(e) {
             var keyCode = e.keyCode || e.which;
@@ -116,6 +117,13 @@
             }
           });
         }
+
+        // Reposition widget when window get resized
+        this.onWindowResize = function() {
+          if (self.isOpen) {
+            self.place();
+          }
+        };
       } else {
         this.$widget = false;
       }
@@ -523,6 +531,7 @@
 
       $(document).off('mousedown.timepicker');
 
+      $(window).off('resize', this.onWindowResize);
       this.isOpen = false;
       // show/hide approach taken by datepicker
       this.$widget.detach();
@@ -800,7 +809,7 @@
         if (this.orientation.x === 'right') {
           left -= widgetWidth - width;
         }
-      } else{
+      } else {
         // auto x orientation is best-placement: if it crosses a window edge, fudge it sideways
         // Default to left
         this.$widget.addClass('timepicker-orient-left');
@@ -1082,6 +1091,7 @@
         }
       }
 
+      $(window).resize(this.onWindowResize);
       this.isOpen = true;
     },
 
