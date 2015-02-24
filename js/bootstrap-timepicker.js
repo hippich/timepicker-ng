@@ -1191,10 +1191,13 @@
 
     widgetKeydown: function(e) {
       var $input = $(e.target),
-          name = $input.attr('class').replace('bootstrap-timepicker-', '');
+          name = $input.attr('name');
 
       switch (e.keyCode) {
       case 9: //tab
+        if (this.lockTabs) {
+          break;
+        }
         if ((this.showMeridian && name === 'meridian') || (this.showSeconds && name === 'second') || (!this.showMeridian && !this.showSeconds && name === 'minute')) {
           return this.hideWidget();
         }
