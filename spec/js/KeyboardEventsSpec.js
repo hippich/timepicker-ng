@@ -228,7 +228,7 @@ describe('Keyboard events feature', function() {
     $secondInput.autotype('{{back}}{{back}}30{{tab}}');
     expect(tp2.getTime()).toBe('2:00:30 AM');
 
-    $meridianInput.autotype('{{back}}{{back}}p{{tab}}');
+    $meridianInput.autotype('{{back}}{{back}}pm{{tab}}');
     expect(tp2.getTime()).toBe('2:00:30 PM');
   });
 
@@ -256,7 +256,7 @@ describe('Keyboard events feature', function() {
     $meridianInput.autotype('{{back}}{{back}}dk{{tab}}');
     expect(tp1.getTime()).toBe('10:59 AM');
 
-    $meridianInput.autotype('{{back}}{{back}}p{{tab}}');
+    $meridianInput.autotype('{{back}}{{back}}pm{{tab}}');
     expect(tp1.getTime()).toBe('10:59 PM');
 
     $input3.autotype('{{back}}{{back}}{{back}}{{back}}{{back}}{{back}}{{back}}{{back}}25:60:60{{tab}}');

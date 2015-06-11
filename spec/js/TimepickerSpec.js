@@ -73,6 +73,8 @@ describe('Timepicker feature', function() {
     expect(tp1.modalBackdrop).toBe(false);
     expect(tp1.isOpen).toBe(false);
     expect(tp1.showWidgetOnAddonClick).toBe(true);
+    expect(tp1.meridianAm).toBe('AM');
+    expect(tp1.meridianPm).toBe('PM');
   });
 
   it('should allow user to configure defaults', function() {
@@ -161,6 +163,13 @@ describe('Timepicker feature', function() {
     expect(tp2.$widget.find('.bootstrap-timepicker-meridian').val()).toBe('AM');
   });
 
+  it('should be able to use custom meridian labels', function() {
+    tp1.meridianPm = 'ZZ';
+    tp1.setTime('11:15 ZZ');
+    expect(tp1.getTime()).toBe('11:15 ZZ');
+    expect(tp1.getTime('date').getHours()).toBe(23);
+  });
+
   it('should be able get & set the pickers time', function() {
     var time1 = new Date(2000, 0, 1, 9, 15, 0),
         time2 = new Date(2015, 0, 1, 16, 0, 0),
@@ -216,19 +225,14 @@ describe('Timepicker feature', function() {
     tp3.setTime('13');
     expect(tp3.getTime()).toBe('13:00:00');
 
-    tp1.setTime('10:20p');
+    tp1.setTime('10:20pm');
     expect(tp1.getTime()).toBe('10:20 PM');
-    tp3.setTime('10:20p');
+    tp3.setTime('10:20pm');
     expect(tp3.getTime()).toBe('22:20:00');
 
-    tp1.setTime('10:20 p.m.');
-    expect(tp1.getTime()).toBe('10:20 PM');
-    tp3.setTime('10:20 p.m.');
-    expect(tp3.getTime()).toBe('22:20:00');
-
-    tp1.setTime('10:20a');
+    tp1.setTime('10:20am');
     expect(tp1.getTime()).toBe('10:20 AM');
-    tp3.setTime('10:20a');
+    tp3.setTime('10:20am');
     expect(tp3.getTime()).toBe('10:20:00');
 
     tp1.setTime('10:2010');
