@@ -1,6 +1,6 @@
 {
     "name": "timepicker-ng",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "description": "A timepicker component for Twitter Bootstrap 3.x",
     "repository": {
       "type": "git",
