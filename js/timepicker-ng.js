@@ -848,7 +848,7 @@
     },
 
     remove: function() {
-      $('document').off('.timepicker');
+      $(document).off('.timepicker');
       if (this.$widget) {
         this.$widget.remove();
       }
@@ -1051,7 +1051,7 @@
       // show/hide approach taken by datepicker
       this.$widget.appendTo(this.appendWidgetTo);
       var self = this;
-      $(document).on('mousedown.timepicker, touchend.timepicker', function (e) {
+      $(document).on('mousedown.timepicker touchend.timepicker', function (e) {
         // This condition was inspired by bootstrap-datepicker.
         // The element the timepicker is invoked on is the input but it has a sibling for input-group-addon/button.
         if (!(self.$element.parent().find(e.target).length ||
